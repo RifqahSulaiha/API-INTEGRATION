@@ -38,3 +38,9 @@ This weather application is particularly useful for students or beginners in web
 It is also a good project to demonstrate in a portfolio, showing the ability to integrate external data sources into a live application. With further development, it can be enhanced by adding features like real-
 time updates, automatic location detection using geolocation APIs, weather icons, or styling enhancements using frameworks like Bootstrap or Tailwind CSS. Overall, this project combines key elements of front-end 
 development in a clean, interactive, and educational manner.
+
+Output
+
+![Image](https://github.com/user-attachments/assets/4c4dbfe1-34aa-4d9c-83a6-82651370d8aa)
+
+![Image](https://github.com/user-attachments/assets/43698913-0944-4a63-9f71-53be7d3d17f9)

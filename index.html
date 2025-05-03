@@ -1,0 +1,67 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Application</title>
+    <style>
+        body { font-family:"Script MT"; background: #9c40c1 ; padding: 200px; }
+        .weather-container { 
+            position: relative;
+            background: rgb(255, 131, 234);
+            padding: 80px;
+            border-radius: 200px; 
+            box-shadow: 0 5px 50px rgb(82, 7, 82); 
+            max-width: 800px; 
+            margin: auto;
+         }
+        p { 
+            text-align: center;
+         }
+        .temperature { font-size: 9em; color: #168bf1; }
+    </style>
+</head>
+<body>
+    <center><img src="weather.png" alt="weather logo" height="60%"></center>
+    
+    <br>
+    <div class="weather-container">
+        <p><u><font size="10">Weather App</font></u></p>
+        <center><img src="clouds.png" alt="clouds" height="80%"></center>
+        <center><input type="text" id="city" placeholder="Enter your city name." />
+        <button onclick="fetchWeather()">Get Weather</button>
+        <div id="weather-output"></center></div>
+    </div>
+
+    <script>
+        async function fetchWeather() {
+            const city = document.getElementById('city').value;
+            const apiKey = '9ec274674f3614dbfc3c6060bbd0487e'; 
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                displayWeather(data);
+            } catch (error) {
+                document.getElementById('weather-output').innerHTML = 'Error fetching weather data.';
+                console.error('Error:', error);
+            }
+        }
+
+        function displayWeather(data) {
+            if (data.cod === 200) {
+                const weatherOutput = `
+                    <h2>${data.name}, ${data.sys.country}</h2>
+                    <div class="temperature">${data.main.temp}°C</div>
+                    <p>${data.weather[0].description}</p>
+                    <p>Humidity: ${data.main.humidity}%</p>
+                `;
+                document.getElementById('weather-output').innerHTML = weatherOutput;
+            } else {
+                document.getElementById('weather-output').innerHTML = 'No such city found.';
+            }
+        }
+    </script>
+</body>
+</html>
